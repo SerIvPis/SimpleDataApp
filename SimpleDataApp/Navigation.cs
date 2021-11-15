@@ -15,22 +15,22 @@ namespace SimpleDataApp
     public partial class Navigation : Form
     {
         // Датасет уровня формы
-        public DataSet accessDataSet = new DataSet( "MDB" );
+        static public DataSet accessDataSet = new DataSet( "MDB" );
 
         // Построители команд уровня формы
-        public OleDbCommandBuilder oleDbPROJS;
+        //public OleDbCommandBuilder oleDbPROJS;
         public OleDbCommandBuilder oleDbREGISTRY;
         public OleDbCommandBuilder oleDbECO_ATTR;
         public OleDbCommandBuilder oleDbECO_CONT;
 
         // Адаптеры данных (для каждой таблицы)
-        public OleDbDataAdapter projsTableAdapter;
-        public OleDbDataAdapter registryTableAdapter;
+        //public OleDbDataAdapter projsTableAdapter;
+        static public OleDbDataAdapter registryTableAdapter;
         public OleDbDataAdapter eco_attrTableAdapter;
         public OleDbDataAdapter eco_contTableAdapter;
 
         // Строка соединения уровня формы
-        public string connectString ;
+        static public string connectString ;
 
 
         public Navigation( )

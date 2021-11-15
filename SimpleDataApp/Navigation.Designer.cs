@@ -1,6 +1,6 @@
 ﻿namespace SimpleDataApp
 {
-    partial class Navigation
+    partial  class Navigation
     {
         /// <summary>
         /// Required designer variable.
