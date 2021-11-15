@@ -33,17 +33,17 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.gpDesi = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbFIRM = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbNUMB = new System.Windows.Forms.TextBox();
+            this.tbCODE = new System.Windows.Forms.TextBox();
+            this.dtpDATA = new System.Windows.Forms.DateTimePicker();
+            this.tbPRIM = new System.Windows.Forms.TextBox();
+            this.tbDESI = new System.Windows.Forms.TextBox();
+            this.tbINDE = new System.Windows.Forms.TextBox();
+            this.tbNaim = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,11 +61,11 @@
             this.gpTemplet.Controls.Add(this.btnClear);
             this.gpTemplet.Controls.Add(this.button1);
             this.gpTemplet.Controls.Add(this.gpDesi);
-            this.gpTemplet.Controls.Add(this.dateTimePicker1);
-            this.gpTemplet.Controls.Add(this.textBox8);
-            this.gpTemplet.Controls.Add(this.textBox6);
-            this.gpTemplet.Controls.Add(this.textBox2);
-            this.gpTemplet.Controls.Add(this.textBox1);
+            this.gpTemplet.Controls.Add(this.dtpDATA);
+            this.gpTemplet.Controls.Add(this.tbPRIM);
+            this.gpTemplet.Controls.Add(this.tbDESI);
+            this.gpTemplet.Controls.Add(this.tbINDE);
+            this.gpTemplet.Controls.Add(this.tbNaim);
             this.gpTemplet.Controls.Add(this.label8);
             this.gpTemplet.Controls.Add(this.label7);
             this.gpTemplet.Controls.Add(this.label6);
@@ -109,17 +109,17 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.btnAddRow_Click);
             // 
             // gpDesi
             // 
             this.gpDesi.AutoSize = true;
-            this.gpDesi.Controls.Add(this.textBox3);
+            this.gpDesi.Controls.Add(this.tbFIRM);
             this.gpDesi.Controls.Add(this.label2);
             this.gpDesi.Controls.Add(this.label3);
             this.gpDesi.Controls.Add(this.label4);
-            this.gpDesi.Controls.Add(this.textBox5);
-            this.gpDesi.Controls.Add(this.textBox4);
+            this.gpDesi.Controls.Add(this.tbNUMB);
+            this.gpDesi.Controls.Add(this.tbCODE);
             this.gpDesi.Location = new System.Drawing.Point(19, 261);
             this.gpDesi.Name = "gpDesi";
             this.gpDesi.Size = new System.Drawing.Size(263, 138);
@@ -127,12 +127,12 @@
             this.gpDesi.TabStop = false;
             this.gpDesi.Text = "Децимальный номер";
             // 
-            // textBox3
+            // tbFIRM
             // 
-            this.textBox3.Location = new System.Drawing.Point(50, 23);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 20);
-            this.textBox3.TabIndex = 6;
+            this.tbFIRM.Location = new System.Drawing.Point(50, 23);
+            this.tbFIRM.Name = "tbFIRM";
+            this.tbFIRM.Size = new System.Drawing.Size(200, 20);
+            this.tbFIRM.TabIndex = 6;
             // 
             // label2
             // 
@@ -161,57 +161,57 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "NUMB:";
             // 
-            // textBox5
+            // tbNUMB
             // 
-            this.textBox5.Location = new System.Drawing.Point(50, 99);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(200, 20);
-            this.textBox5.TabIndex = 8;
+            this.tbNUMB.Location = new System.Drawing.Point(50, 99);
+            this.tbNUMB.Name = "tbNUMB";
+            this.tbNUMB.Size = new System.Drawing.Size(200, 20);
+            this.tbNUMB.TabIndex = 8;
             // 
-            // textBox4
+            // tbCODE
             // 
-            this.textBox4.Location = new System.Drawing.Point(50, 63);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(200, 20);
-            this.textBox4.TabIndex = 7;
+            this.tbCODE.Location = new System.Drawing.Point(50, 63);
+            this.tbCODE.Name = "tbCODE";
+            this.tbCODE.Size = new System.Drawing.Size(200, 20);
+            this.tbCODE.TabIndex = 7;
             // 
-            // dateTimePicker1
+            // dtpDATA
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(70, 166);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2040, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(1990, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 4;
-            this.dateTimePicker1.Value = new System.DateTime(1990, 12, 31, 0, 0, 0, 0);
+            this.dtpDATA.Location = new System.Drawing.Point(70, 166);
+            this.dtpDATA.MaxDate = new System.DateTime(2040, 12, 31, 0, 0, 0, 0);
+            this.dtpDATA.MinDate = new System.DateTime(1990, 12, 31, 0, 0, 0, 0);
+            this.dtpDATA.Name = "dtpDATA";
+            this.dtpDATA.Size = new System.Drawing.Size(200, 20);
+            this.dtpDATA.TabIndex = 4;
+            this.dtpDATA.Value = new System.DateTime(1990, 12, 31, 0, 0, 0, 0);
             // 
-            // textBox8
+            // tbPRIM
             // 
-            this.textBox8.Location = new System.Drawing.Point(70, 218);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(200, 20);
-            this.textBox8.TabIndex = 5;
+            this.tbPRIM.Location = new System.Drawing.Point(70, 218);
+            this.tbPRIM.Name = "tbPRIM";
+            this.tbPRIM.Size = new System.Drawing.Size(200, 20);
+            this.tbPRIM.TabIndex = 5;
             // 
-            // textBox6
+            // tbDESI
             // 
-            this.textBox6.Location = new System.Drawing.Point(70, 116);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(200, 20);
-            this.textBox6.TabIndex = 3;
+            this.tbDESI.Location = new System.Drawing.Point(70, 116);
+            this.tbDESI.Name = "tbDESI";
+            this.tbDESI.Size = new System.Drawing.Size(200, 20);
+            this.tbDESI.TabIndex = 3;
             // 
-            // textBox2
+            // tbINDE
             // 
-            this.textBox2.Location = new System.Drawing.Point(70, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 20);
-            this.textBox2.TabIndex = 2;
+            this.tbINDE.Location = new System.Drawing.Point(70, 76);
+            this.tbINDE.Name = "tbINDE";
+            this.tbINDE.Size = new System.Drawing.Size(200, 20);
+            this.tbINDE.TabIndex = 2;
             // 
-            // textBox1
+            // tbNaim
             // 
-            this.textBox1.Location = new System.Drawing.Point(70, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbNaim.Location = new System.Drawing.Point(70, 35);
+            this.tbNaim.Name = "tbNaim";
+            this.tbNaim.Size = new System.Drawing.Size(200, 20);
+            this.tbNaim.TabIndex = 1;
             // 
             // label8
             // 
@@ -284,17 +284,17 @@
 
         private System.Windows.Forms.GroupBox gpTemplet;
         private System.Windows.Forms.GroupBox gpDesi;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbFIRM;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbNUMB;
+        private System.Windows.Forms.TextBox tbCODE;
+        private System.Windows.Forms.DateTimePicker dtpDATA;
+        private System.Windows.Forms.TextBox tbPRIM;
+        private System.Windows.Forms.TextBox tbDESI;
+        private System.Windows.Forms.TextBox tbINDE;
+        private System.Windows.Forms.TextBox tbNaim;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;

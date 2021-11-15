@@ -13,14 +13,49 @@ namespace SimpleDataApp
 {
     public partial class addREGISTRY : Form
     {
+        // Датасет уровня формы
+        private DataSet accessDataSet ;
+
+        // Построители команд уровня формы
+        private OleDbCommandBuilder oleDbREGISTRY;
+
+        // Адаптеры данных (для каждой таблицы)
+        private OleDbDataAdapter registryTableAdapter;
+
+        // Строка соединения уровня формы
+        private string connectString;
+        
         public addREGISTRY( )
         {
             InitializeComponent( );
-            dateTimePicker1.Value = DateTime.Now;
+            dtpDATA.Value = DateTime.Now;
         }
 
-        public addREGISTRY( DataSet accessDataSet, OleDbDataAdapter registryTableAdapter, string connectString)
+        //Передача данных формы Navigation через контструктор
+        public addREGISTRY( DataSet _accessDataSet,
+                           OleDbDataAdapter _registryTableAdapter,
+                           string _connectString )
         {
+            if (_accessDataSet is null)
+            {
+                throw new ArgumentNullException( nameof( _accessDataSet ) );
+            }
+
+            if (_registryTableAdapter is null)
+            {
+                throw new ArgumentNullException( nameof( _registryTableAdapter ) );
+            }
+
+            if (string.IsNullOrEmpty( _connectString ))
+            {
+                throw new ArgumentException( $"'{nameof( _connectString )}' cannot be null or empty.", nameof( _connectString ) );
+            }
+            InitializeComponent( );
+            dtpDATA.Value = DateTime.Now;
+            this.accessDataSet = _accessDataSet;
+            this.registryTableAdapter = _registryTableAdapter;
+            this.connectString = _connectString;
+
             //TODO: Передача данных между главное и вторичной формой. Альтернатива static полям формы
         }
 
@@ -51,52 +86,61 @@ namespace SimpleDataApp
             this.Close( );
         }
 
-        private void button1_Click( object sender, EventArgs e )
+        private void btnAddRow_Click( object sender, EventArgs e )
         {
-            OleDbCommand cmd = new OleDbCommand( "Insert into REGISTRY" +
+            OleDbConnection connect = new OleDbConnection( connectString );
+            OleDbCommand cmd = new OleDbCommand( "INSERT INTO REGISTRY" +
                 "(NAIM, INDE, DESI, DATA, PRIM, FIRM, CODE, NUMB)" +
-                " Values (@ID,@FIO,@Grupa)", new OleDbConnection( Navigation.connectString) );
-            //объявляем объект класса SqlParameter
-            SqlParameter param = new SqlParameter( );
-            //задаем имя параметра
-            param.ParameterName = "@ID";
-            //задаем значение параметра
-            param.Value = 10;
-            //задаем тип параметра
-            param.SqlDbType = SqlDbType.Int;
-            //передаем параметр объекту класса SqlCommand
-            cmd.Parameters.Add( param );
-            //переопределяем объект класса SqlParameter
-            param = new SqlParameter( );
-            //задаем имя параметра
-            param.ParameterName = "@FIO";
-            //задаем значение параметра
-            param.Value = "Иванов Иван Иванович";
-            //задаем тип параметра
-            param.SqlDbType = SqlDbType.Text;
-            //передаем параметр объекту класса SqlCommand
-            cmd.Parameters.Add( param );
-            //переопределяем объект класса SqlParameter
-            param = new SqlParameter( );
-            //задаем имя параметра
-            param.ParameterName = "@Grupa";
-            //задаем значение параметра
-            param.Value = "4-2";
-            //задаем тип параметра
-            param.SqlDbType = SqlDbType.Text;
-            //передаем параметр объекту класса SqlCommand
-            cmd.Parameters.Add( param );
-            Console.WriteLine( "Вставляем запись" );
-            try
-            {
-                cmd.ExecuteNonQuery( );
-            }
-            catch (Exception)
-            {
+                " Values (?, ?, ?, ?, ?, ?, ?, ?)", connect );
+               
 
-                throw;
+            //объявляем объект класса OleDbParameter и добавляем к команде cmd
+
+            CreateParameterString(  cmd, "@NAIM", tbNaim.Text, OleDbType.LongVarChar );
+            CreateParameterString(  cmd, "@INDE", tbINDE.Text, OleDbType.LongVarChar );
+            CreateParameterString(  cmd, "@DESI", tbDESI.Text, OleDbType.LongVarChar );
+            CreateParameterString(  cmd, "@DATA", dtpDATA.Value.ToShortDateString(), OleDbType.LongVarChar );
+            CreateParameterString(  cmd, "@PRIM", tbPRIM.Text, OleDbType.LongVarChar );
+            CreateParameterString(  cmd, "@FIRM", tbFIRM.Text, OleDbType.LongVarChar );
+            CreateParameterString(  cmd, "@CODE", tbCODE.Text, OleDbType.LongVarChar );
+            CreateParameterString(  cmd, "@NUMB", tbNUMB.Text, OleDbType.LongVarChar );
+
+            using (connect)
+            {
+                try
+                {
+                    connect.Open( );
+                    cmd.ExecuteNonQuery( );
+                    connect.Close( );
             }
-            
+                catch (OleDbException oe)
+                {
+                    MessageBox.Show( $"Ошибка вставки в таблицу REGISTRY: {oe.Message}" );
+                    throw;
+                }
+
+            }
+           
+
+        }
+        /// <summary>
+        /// Создание строкового параметра и присоединение к команде
+        /// </summary>
+        /// <param name="cmd"></param>
+        /// <param name="_name"></param>
+        /// <param name="_value"></param>
+        /// <param name="_oleType"></param>
+        private void CreateParameterString( OleDbCommand cmd, string _name, string _value, OleDbType _oleType  )
+        {
+            OleDbParameter param = new OleDbParameter( );
+            //задаем имя параметра
+            param.ParameterName = _name;
+            //задаем значение параметра
+            param.Value = _value;
+            //задаем тип параметра
+            param.OleDbType = _oleType;
+            //передаем параметр объекту класса SqlCommand
+            cmd.Parameters.Add( param );
         }
     }
 }

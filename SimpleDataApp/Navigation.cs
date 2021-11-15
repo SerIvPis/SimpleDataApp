@@ -40,7 +40,7 @@ namespace SimpleDataApp
 
         private void btnGoToFillorCancel_Click( object sender, EventArgs e )
         {
-              new addREGISTRY( ).Show();
+            new addREGISTRY( accessDataSet, registryTableAdapter, connectString ).Show( );
             
         }
 
@@ -101,17 +101,19 @@ namespace SimpleDataApp
 
         private void InitComboBox( )
         {
+            cbxSelectTableForView.Items.Clear( );
             cbxSelectTableForView.Items.AddRange( new string[] { accessDataSet.Tables[0].TableName,
                 accessDataSet.Tables[1].TableName,
                 accessDataSet.Tables[2].TableName,
-                accessDataSet.Tables[3].TableName
+               // accessDataSet.Tables[3].TableName
             } );
             cbxSelectTableForView.SelectedIndex = 0;
         }
 
         private void FillDataSet( )
         {
-            projsTableAdapter.Fill( accessDataSet, "PROJS" );
+            accessDataSet.Clear( );
+           //projsTableAdapter.Fill( accessDataSet, "PROJS" );
             registryTableAdapter.Fill( accessDataSet, "REGISTRY" );
             eco_attrTableAdapter.Fill( accessDataSet, "ECO_ATTR" );
             eco_contTableAdapter.Fill( accessDataSet, "ECO_CONT" );
@@ -119,10 +121,10 @@ namespace SimpleDataApp
 
         private void InitTableAdapter( )
         {
-            projsTableAdapter = new OleDbDataAdapter( "Select * From PROJS", connectString );
-            registryTableAdapter = new OleDbDataAdapter( "Select * From REGISTRY", connectString );
-            eco_attrTableAdapter = new OleDbDataAdapter( "Select * From ECO_ATTR", connectString );
-            eco_contTableAdapter = new OleDbDataAdapter( "Select * From ECO_CONT", connectString );
+            //projsTableAdapter = new OleDbDataAdapter( "Select * From PROJS", connectString );
+            registryTableAdapter = new OleDbDataAdapter( "Select NAIM, INDE, DESI, DATA, PRIM, FIRM, CODE, NUMB From REGISTRY", connectString ); /*"SELECT CustomerID, CompanyName FROM Customers "*/
+            eco_attrTableAdapter = new OleDbDataAdapter( "Select FIRM, DIVI, VYPD, CODE, NUMB, NKIT, CKIT, CREATED, CREATOR From ECO_ATTR", connectString );
+            eco_contTableAdapter = new OleDbDataAdapter( "Select OBOZ, IZME From ECO_CONT", connectString );
         }
 
         private void cbxSelectTableForView_SelectionChangeCommitted( object sender, EventArgs e )
