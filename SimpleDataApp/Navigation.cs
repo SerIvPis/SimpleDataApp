@@ -15,7 +15,7 @@ namespace SimpleDataApp
     public partial class Navigation : Form
     {
         // Датасет уровня формы
-        static public DataSet accessDataSet = new DataSet( "MDB" );
+        public DataSet accessDataSet = new DataSet( "MDB" );
 
         // Построители команд уровня формы
         //public OleDbCommandBuilder oleDbPROJS;
@@ -25,12 +25,12 @@ namespace SimpleDataApp
 
         // Адаптеры данных (для каждой таблицы)
         //public OleDbDataAdapter projsTableAdapter;
-        static public OleDbDataAdapter registryTableAdapter;
+        public OleDbDataAdapter registryTableAdapter;
         public OleDbDataAdapter eco_attrTableAdapter;
         public OleDbDataAdapter eco_contTableAdapter;
 
         // Строка соединения уровня формы
-        static public string connectString ;
+        public string connectString ;
 
 
         public Navigation( )
@@ -40,7 +40,27 @@ namespace SimpleDataApp
 
         private void btnGoToFillorCancel_Click( object sender, EventArgs e )
         {
-            new addREGISTRY( accessDataSet, registryTableAdapter, connectString ).Show( );
+            switch (cbxSelectTableForView.SelectedIndex)
+            {
+                case 0:
+                    {
+                        new addREGISTRY( accessDataSet, registryTableAdapter, connectString ).Show( );
+                        break;
+                    }
+                case 1:
+                    {
+                        new addECCO_ATTR( accessDataSet, registryTableAdapter, connectString ).Show( );
+                        break;
+                    }
+                case 2:
+                    {
+                        new addECCO_CONT( accessDataSet, registryTableAdapter, connectString ).Show( );
+                        break;
+                    }
+                default:
+                    break;
+            }
+           
             
         }
 
@@ -51,8 +71,10 @@ namespace SimpleDataApp
 
         private void btnConnect_Click( object sender, EventArgs e )
         {
-            // Создать строку подсоединения
-            connectString = ConfigurationManager.ConnectionStrings[ "OleDb" ].ConnectionString;
+            // Создать строку подсоединения РАБОТА
+            connectString = ConfigurationManager.ConnectionStrings[ "OleDbWork" ].ConnectionString;
+            // Создать строку подсоединения ДОМАШНЯЯ
+            //connectString = ConfigurationManager.ConnectionStrings[ "OleDb" ].ConnectionString;
             if (connectString != null)
             {
                 try
@@ -68,28 +90,6 @@ namespace SimpleDataApp
 
                     //Заполнить combobox списком имен таблиц DataSet 
                     InitComboBox( );
-                    
-
-
-                    /*
-                        DataSet ds = new DataSet( "MDB" );
-                        OleDbDataAdapter adapter = new OleDbDataAdapter( "Select * From PROJS", connectString );
-                        OleDbCommandBuilder comBuilder = new OleDbCommandBuilder( adapter );
-                        
-                        int count = adapter.Fill( ds, "PROJS" );
-                        dgvCommon.DataSource = ds.Tables[ "PROJS" ];
-
-                        // Create the SelectCommand.
-                        OleDbCommand command = new OleDbCommand( "SELECT CustomerID FROM Customers " +
-                            "WHERE Country = ? AND City = ?"  );
-
-                        command.Parameters.Add( "Country", OleDbType.VarChar, 15 );
-                        command.Parameters.Add( "City", OleDbType.VarChar, 15 );
-
-                        adapter.InsertCommand = command;
-                        //MessageBox.Show( count.ToString() );
-
-                    */
                 }
                 catch (OleDbException ex)
                 {

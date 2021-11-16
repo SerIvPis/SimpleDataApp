@@ -41,17 +41,18 @@
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.cbxSelectTableForView = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommon)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGoToFillorCancel
             // 
-            this.btnGoToFillorCancel.Location = new System.Drawing.Point(651, 12);
+            this.btnGoToFillorCancel.Location = new System.Drawing.Point(649, 174);
             this.btnGoToFillorCancel.Name = "btnGoToFillorCancel";
-            this.btnGoToFillorCancel.Size = new System.Drawing.Size(182, 23);
+            this.btnGoToFillorCancel.Size = new System.Drawing.Size(123, 23);
             this.btnGoToFillorCancel.TabIndex = 0;
-            this.btnGoToFillorCancel.Text = "Заполнить или отменить строку";
+            this.btnGoToFillorCancel.Text = "Добавить строку";
             this.btnGoToFillorCancel.UseVisualStyleBackColor = true;
             this.btnGoToFillorCancel.Click += new System.EventHandler(this.btnGoToFillorCancel_Click);
             // 
@@ -94,7 +95,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(651, 78);
+            this.btnConnect.Location = new System.Drawing.Point(651, 16);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(90, 23);
             this.btnConnect.TabIndex = 3;
@@ -113,7 +114,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(326, 426);
+            this.btnBack.Location = new System.Drawing.Point(262, 426);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(90, 23);
             this.btnBack.TabIndex = 5;
@@ -150,17 +151,28 @@
             // 
             this.cbxSelectTableForView.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSelectTableForView.FormattingEnabled = true;
-            this.cbxSelectTableForView.Location = new System.Drawing.Point(651, 117);
+            this.cbxSelectTableForView.Location = new System.Drawing.Point(651, 55);
             this.cbxSelectTableForView.Name = "cbxSelectTableForView";
             this.cbxSelectTableForView.Size = new System.Drawing.Size(121, 21);
             this.cbxSelectTableForView.TabIndex = 7;
             this.cbxSelectTableForView.SelectionChangeCommitted += new System.EventHandler(this.cbxSelectTableForView_SelectionChangeCommitted);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(518, 430);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(112, 17);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "Режим редакции";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Navigation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(843, 492);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.cbxSelectTableForView);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnBack);
@@ -191,5 +203,6 @@
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ComboBox cbxSelectTableForView;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
