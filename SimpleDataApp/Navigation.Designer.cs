@@ -41,7 +41,7 @@
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.cbxSelectTableForView = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbEdit = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommon)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +58,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(753, 426);
+            this.btnExit.Location = new System.Drawing.Point(703, 424);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(69, 23);
             this.btnExit.TabIndex = 1;
@@ -111,6 +111,7 @@
             this.btnForward.TabIndex = 4;
             this.btnForward.Text = "Назад";
             this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // btnBack
             // 
@@ -128,7 +129,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 470);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(843, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(786, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -157,22 +158,25 @@
             this.cbxSelectTableForView.TabIndex = 7;
             this.cbxSelectTableForView.SelectionChangeCommitted += new System.EventHandler(this.cbxSelectTableForView_SelectionChangeCommitted);
             // 
-            // checkBox1
+            // cbEdit
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(518, 430);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(112, 17);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Режим редакции";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbEdit.AutoSize = true;
+            this.cbEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.cbEdit.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbEdit.Location = new System.Drawing.Point(518, 430);
+            this.cbEdit.Name = "cbEdit";
+            this.cbEdit.Size = new System.Drawing.Size(112, 17);
+            this.cbEdit.TabIndex = 8;
+            this.cbEdit.Text = "Режим редакции";
+            this.cbEdit.UseVisualStyleBackColor = false;
+            this.cbEdit.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // Navigation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 492);
-            this.Controls.Add(this.checkBox1);
+            this.ClientSize = new System.Drawing.Size(786, 492);
+            this.Controls.Add(this.cbEdit);
             this.Controls.Add(this.cbxSelectTableForView);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnBack);
@@ -203,6 +207,6 @@
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ComboBox cbxSelectTableForView;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbEdit;
     }
 }

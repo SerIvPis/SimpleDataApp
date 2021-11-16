@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using MDBLibrary;
+using System.Configuration;
 
 
 namespace SimpleDataApp
@@ -19,7 +20,10 @@ namespace SimpleDataApp
         {
             Application.EnableVisualStyles( );
             Application.SetCompatibleTextRenderingDefault( false );
-            Application.Run( new Navigation( ) );
+            accessDB db = new accessDB( ConfigurationManager.ConnectionStrings[ "OleDbWork" ].ConnectionString );
+            //accessDB db = new accessDB( ConfigurationManager.ConnectionStrings[ "OleDb" ].ConnectionString );
+
+            Application.Run( new Navigation( db ) );
         }
 
     }

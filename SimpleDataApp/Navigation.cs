@@ -9,33 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using MDBLibrary;
 
 namespace SimpleDataApp
 {
     public partial class Navigation : Form
     {
-        // Датасет уровня формы
-        public DataSet accessDataSet = new DataSet( "MDB" );
-
-        // Построители команд уровня формы
-        //public OleDbCommandBuilder oleDbPROJS;
-        public OleDbCommandBuilder oleDbREGISTRY;
-        public OleDbCommandBuilder oleDbECO_ATTR;
-        public OleDbCommandBuilder oleDbECO_CONT;
-
-        // Адаптеры данных (для каждой таблицы)
-        //public OleDbDataAdapter projsTableAdapter;
-        public OleDbDataAdapter registryTableAdapter;
-        public OleDbDataAdapter eco_attrTableAdapter;
-        public OleDbDataAdapter eco_contTableAdapter;
-
-        // Строка соединения уровня формы
-        public string connectString ;
-
+        private accessDB db;
 
         public Navigation( )
         {
             InitializeComponent( );
+        }
+
+        public Navigation( accessDB _db )
+        {
+            InitializeComponent( );
+            this.db = _db;
         }
 
         private void btnGoToFillorCancel_Click( object sender, EventArgs e )
@@ -44,24 +34,22 @@ namespace SimpleDataApp
             {
                 case 0:
                     {
-                        new addREGISTRY( accessDataSet, registryTableAdapter, connectString ).Show( );
+                        new addREGISTRY( db ).Show( );
                         break;
                     }
                 case 1:
                     {
-                        new addECCO_ATTR( accessDataSet, registryTableAdapter, connectString ).Show( );
+                        new addECCO_ATTR( db ).Show( );
                         break;
                     }
                 case 2:
                     {
-                        new addECCO_CONT( accessDataSet, registryTableAdapter, connectString ).Show( );
+                        new addECCO_CONT( db ).Show( );
                         break;
                     }
                 default:
                     break;
             }
-           
-            
         }
 
         private void btnExit_Click( object sender, EventArgs e )
@@ -71,65 +59,46 @@ namespace SimpleDataApp
 
         private void btnConnect_Click( object sender, EventArgs e )
         {
-            // Создать строку подсоединения РАБОТА
-            connectString = ConfigurationManager.ConnectionStrings[ "OleDbWork" ].ConnectionString;
-            // Создать строку подсоединения ДОМАШНЯЯ
-            //connectString = ConfigurationManager.ConnectionStrings[ "OleDb" ].ConnectionString;
-            if (connectString != null)
+            try
             {
-                try
-                {
-                    //Создать адаптеры
-                    InitTableAdapter( );
+                db.Reload( );
+                //Подсоединить DataSet к GridDataView
+                dgvCommon.DataSource = db.accessDataSet;
 
-                    //Заполнить данными DataSet
-                    FillDataSet( );
-
-                    //Подсоединить DataSet к GridDataView
-                    dgvCommon.DataSource = accessDataSet;
-
-                    //Заполнить combobox списком имен таблиц DataSet 
-                    InitComboBox( );
-                }
-                catch (OleDbException ex)
-                {
-                    MessageBox.Show( $"Ошибка подключения: {ex.Message}" );
-                    throw;
-                }
+                //Заполнить combobox списком имен таблиц DataSet 
+                InitComboBox( db.accessDataSet );
+            }
+            catch (OleDbException ex)
+            {
+                MessageBox.Show( $"Ошибка подключения: {ex.Message}" );
+                throw;
             }
         }
 
-        private void InitComboBox( )
+        private void InitComboBox( DataSet ds )
         {
             cbxSelectTableForView.Items.Clear( );
-            cbxSelectTableForView.Items.AddRange( new string[] { accessDataSet.Tables[0].TableName,
-                accessDataSet.Tables[1].TableName,
-                accessDataSet.Tables[2].TableName,
-               // accessDataSet.Tables[3].TableName
+            cbxSelectTableForView.Items.AddRange( new string[] {
+                ds.Tables[0].TableName,//REGISTRY
+                ds.Tables[1].TableName,//ECO_ATTR
+                ds.Tables[2].TableName,//ECO_CONT
             } );
             cbxSelectTableForView.SelectedIndex = 0;
-        }
-
-        private void FillDataSet( )
-        {
-            accessDataSet.Clear( );
-           //projsTableAdapter.Fill( accessDataSet, "PROJS" );
-            registryTableAdapter.Fill( accessDataSet, "REGISTRY" );
-            eco_attrTableAdapter.Fill( accessDataSet, "ECO_ATTR" );
-            eco_contTableAdapter.Fill( accessDataSet, "ECO_CONT" );
-        }
-
-        private void InitTableAdapter( )
-        {
-            //projsTableAdapter = new OleDbDataAdapter( "Select * From PROJS", connectString );
-            registryTableAdapter = new OleDbDataAdapter( "Select NAIM, INDE, DESI, DATA, PRIM, FIRM, CODE, NUMB From REGISTRY", connectString ); /*"SELECT CustomerID, CompanyName FROM Customers "*/
-            eco_attrTableAdapter = new OleDbDataAdapter( "Select FIRM, DIVI, VYPD, CODE, NUMB, NKIT, CKIT, CREATED, CREATOR From ECO_ATTR", connectString );
-            eco_contTableAdapter = new OleDbDataAdapter( "Select OBOZ, IZME From ECO_CONT", connectString );
         }
 
         private void cbxSelectTableForView_SelectionChangeCommitted( object sender, EventArgs e )
         {
             dgvCommon.DataMember = cbxSelectTableForView.SelectedItem.ToString( );
+        }
+
+        private void checkBox1_CheckStateChanged( object sender, EventArgs e )
+        {
+            dgvCommon.ReadOnly = !cbEdit.Checked;
+        }
+
+        private void btnForward_Click( object sender, EventArgs e )
+        {
+           
         }
     }
 }

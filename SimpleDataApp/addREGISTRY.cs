@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MDBLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,50 +14,31 @@ namespace SimpleDataApp
 {
     public partial class addREGISTRY : Form
     {
-        // Датасет уровня формы
-        private DataSet accessDataSet ;
-
-        // Построители команд уровня формы
-        private OleDbCommandBuilder oleDbREGISTRY;
-
-        // Адаптеры данных (для каждой таблицы)
-        private OleDbDataAdapter registryTableAdapter;
-
-        // Строка соединения уровня формы
-        private string connectString;
+        private accessDB db;
         
         public addREGISTRY( )
         {
             InitializeComponent( );
+            ttCODE.SetToolTip( tbCODE, "Поле CODE" );
+            ttDESI.SetToolTip( tbDESI, "Поле DESI" );
+            ttFIRM.SetToolTip( tbFIRM, "Поле FIRM" );
+            ttINDE.SetToolTip( tbCODE, "Поле INDE" );
+            ttNUMB.SetToolTip( tbNUMB, "Поле NUMB" );
+            ttPRIM.SetToolTip( tbPRIM, "Поле PRIM" );
             dtpDATA.Value = DateTime.Now;
         }
 
         //Передача данных формы Navigation через контструктор
-        public addREGISTRY( DataSet _accessDataSet,
-                           OleDbDataAdapter _registryTableAdapter,
-                           string _connectString )
+        public addREGISTRY( accessDB _db )
         {
-            if (_accessDataSet is null)
+            if (_db is null)
             {
-                throw new ArgumentNullException( nameof( _accessDataSet ) );
+                throw new ArgumentNullException( nameof( _db ) );
             }
 
-            if (_registryTableAdapter is null)
-            {
-                throw new ArgumentNullException( nameof( _registryTableAdapter ) );
-            }
-
-            if (string.IsNullOrEmpty( _connectString ))
-            {
-                throw new ArgumentException( $"'{nameof( _connectString )}' cannot be null or empty.", nameof( _connectString ) );
-            }
             InitializeComponent( );
             dtpDATA.Value = DateTime.Now;
-            this.accessDataSet = _accessDataSet;
-            this.registryTableAdapter = _registryTableAdapter;
-            this.connectString = _connectString;
-
-            //TODO: Передача данных между главное и вторичной формой. Альтернатива static полям формы
+            db = _db;
         }
 
         private void btnClear_Click( object sender, EventArgs e )
@@ -88,41 +70,54 @@ namespace SimpleDataApp
 
         private void btnAddRow_Click( object sender, EventArgs e )
         {
-            OleDbConnection connect = new OleDbConnection( connectString );
+            #region MyRegion
+            /*//OleDbConnection connect = new OleDbConnection( connectString );
             OleDbCommand cmd = new OleDbCommand( "INSERT INTO REGISTRY" +
                 "(NAIM, INDE, DESI, DATA, PRIM, FIRM, CODE, NUMB)" +
-                " Values (?, ?, ?, ?, ?, ?, ?, ?)", connect );
-               
+                " Values (?, ?, ?, ?, ?, ?, ?, ?)", db.connect );
+
 
             //объявляем объект класса OleDbParameter и добавляем к команде cmd
 
-            CreateParameterString(  cmd, "@NAIM", tbNaim.Text, OleDbType.LongVarChar );
-            CreateParameterString(  cmd, "@INDE", tbINDE.Text, OleDbType.LongVarChar );
-            CreateParameterString(  cmd, "@DESI", tbDESI.Text, OleDbType.LongVarChar );
-            CreateParameterString(  cmd, "@DATA", dtpDATA.Value.ToShortDateString(), OleDbType.LongVarChar );
-            CreateParameterString(  cmd, "@PRIM", tbPRIM.Text, OleDbType.LongVarChar );
-            CreateParameterString(  cmd, "@FIRM", tbFIRM.Text, OleDbType.LongVarChar );
-            CreateParameterString(  cmd, "@CODE", tbCODE.Text, OleDbType.LongVarChar );
-            CreateParameterString(  cmd, "@NUMB", tbNUMB.Text, OleDbType.LongVarChar );
+            CreateParameterString( cmd, "@NAIM", tbNaim.Text, OleDbType.LongVarChar );
+            CreateParameterString( cmd, "@INDE", tbINDE.Text, OleDbType.LongVarChar );
+            CreateParameterString( cmd, "@DESI", tbDESI.Text, OleDbType.LongVarChar );
+            CreateParameterString( cmd, "@DATA", dtpDATA.Value.ToShortDateString( ), OleDbType.LongVarChar );
+            CreateParameterString( cmd, "@PRIM", tbPRIM.Text, OleDbType.LongVarChar );
+            CreateParameterString( cmd, "@FIRM", tbFIRM.Text, OleDbType.LongVarChar );
+            CreateParameterString( cmd, "@CODE", tbCODE.Text, OleDbType.LongVarChar );
+            CreateParameterString( cmd, "@NUMB", tbNUMB.Text, OleDbType.LongVarChar );
 
-            using (connect)
+            using (db.connect)
             {
                 try
                 {
-                    connect.Open( );
+                    db.connect.Open( );
                     cmd.ExecuteNonQuery( );
-                    connect.Close( );
-            }
+                    db.connect.Close( );
+                }
                 catch (OleDbException oe)
                 {
                     MessageBox.Show( $"Ошибка вставки в таблицу REGISTRY: {oe.Message}" );
                     throw;
                 }
 
-            }
-           
+            }*/
+            #endregion
 
+            db.addRowInTable( "REGISTRY",
+                                new Dictionary<string, string>( ) {
+                                    {"NAIM", tbNaim.Text},
+                                    {"INDE", tbINDE.Text},
+                                    {"DESI", tbDESI.Text},
+                                    {"DATA", dtpDATA.Value.ToShortDateString()},
+                                    {"PRIM", tbPRIM.Text},
+                                    {"FIRM", tbFIRM.Text},
+                                    {"CODE", tbCODE.Text},
+                                    {"NUMB", tbNUMB.Text}
+                                } );
         }
+
         /// <summary>
         /// Создание строкового параметра и присоединение к команде
         /// </summary>
@@ -141,6 +136,21 @@ namespace SimpleDataApp
             param.OleDbType = _oleType;
             //передаем параметр объекту класса SqlCommand
             cmd.Parameters.Add( param );
+        }
+
+        private void contextMenuStrip1_Opening( object sender, CancelEventArgs e )
+        {
+
+        }
+
+        private void addREGISTRY_Load( object sender, EventArgs e )
+        {
+           
+        }
+
+        private void ttNUMB_Popup( object sender, PopupEventArgs e )
+        {
+
         }
     }
 }
