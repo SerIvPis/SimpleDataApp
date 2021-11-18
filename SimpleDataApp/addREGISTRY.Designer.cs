@@ -30,11 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gpTemplet = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.gpDesi = new System.Windows.Forms.GroupBox();
-            this.tbFIRM = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,8 +41,6 @@
             this.tbCODE = new System.Windows.Forms.TextBox();
             this.dtpDATA = new System.Windows.Forms.DateTimePicker();
             this.tbPRIM = new System.Windows.Forms.TextBox();
-            this.tbDESI = new System.Windows.Forms.TextBox();
-            this.tbINDE = new System.Windows.Forms.TextBox();
             this.tbNaim = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -62,17 +59,14 @@
             // 
             this.gpTemplet.AutoSize = true;
             this.gpTemplet.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gpTemplet.Controls.Add(this.tbFIRM);
             this.gpTemplet.Controls.Add(this.cbINDE);
             this.gpTemplet.Controls.Add(this.cbDESI);
-            this.gpTemplet.Controls.Add(this.button3);
+            this.gpTemplet.Controls.Add(this.btnCancel);
             this.gpTemplet.Controls.Add(this.btnClear);
             this.gpTemplet.Controls.Add(this.button1);
             this.gpTemplet.Controls.Add(this.gpDesi);
             this.gpTemplet.Controls.Add(this.dtpDATA);
             this.gpTemplet.Controls.Add(this.tbPRIM);
-            this.gpTemplet.Controls.Add(this.tbDESI);
-            this.gpTemplet.Controls.Add(this.tbINDE);
             this.gpTemplet.Controls.Add(this.tbNaim);
             this.gpTemplet.Controls.Add(this.label8);
             this.gpTemplet.Controls.Add(this.label7);
@@ -84,37 +78,37 @@
             this.gpTemplet.Margin = new System.Windows.Forms.Padding(10);
             this.gpTemplet.Name = "gpTemplet";
             this.gpTemplet.Padding = new System.Windows.Forms.Padding(10);
-            this.gpTemplet.Size = new System.Drawing.Size(510, 484);
+            this.gpTemplet.Size = new System.Drawing.Size(332, 447);
             this.gpTemplet.TabIndex = 0;
             this.gpTemplet.TabStop = false;
             this.gpTemplet.Text = "Шаблон";
             // 
-            // button3
+            // btnCancel
             // 
-            this.button3.Location = new System.Drawing.Point(237, 436);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Отмена";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Location = new System.Drawing.Point(237, 406);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "Отмена";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(128, 436);
+            this.btnClear.Location = new System.Drawing.Point(128, 406);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 19;
+            this.btnClear.TabIndex = 10;
             this.btnClear.Text = "Очистить";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(19, 436);
+            this.button1.Location = new System.Drawing.Point(19, 406);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnAddRow_Click);
@@ -128,19 +122,12 @@
             this.gpDesi.Controls.Add(this.cbFIRM);
             this.gpDesi.Controls.Add(this.tbNUMB);
             this.gpDesi.Controls.Add(this.tbCODE);
-            this.gpDesi.Location = new System.Drawing.Point(19, 261);
+            this.gpDesi.Location = new System.Drawing.Point(19, 248);
             this.gpDesi.Name = "gpDesi";
             this.gpDesi.Size = new System.Drawing.Size(175, 138);
-            this.gpDesi.TabIndex = 17;
+            this.gpDesi.TabIndex = 6;
             this.gpDesi.TabStop = false;
             this.gpDesi.Text = "Децимальный номер";
-            // 
-            // tbFIRM
-            // 
-            this.tbFIRM.Location = new System.Drawing.Point(287, 232);
-            this.tbFIRM.Name = "tbFIRM";
-            this.tbFIRM.Size = new System.Drawing.Size(200, 20);
-            this.tbFIRM.TabIndex = 6;
             // 
             // label2
             // 
@@ -174,18 +161,18 @@
             this.tbNUMB.Location = new System.Drawing.Point(50, 99);
             this.tbNUMB.Name = "tbNUMB";
             this.tbNUMB.Size = new System.Drawing.Size(58, 20);
-            this.tbNUMB.TabIndex = 8;
+            this.tbNUMB.TabIndex = 3;
             // 
             // tbCODE
             // 
             this.tbCODE.Location = new System.Drawing.Point(50, 63);
             this.tbCODE.Name = "tbCODE";
             this.tbCODE.Size = new System.Drawing.Size(114, 20);
-            this.tbCODE.TabIndex = 7;
+            this.tbCODE.TabIndex = 2;
             // 
             // dtpDATA
             // 
-            this.dtpDATA.Location = new System.Drawing.Point(70, 166);
+            this.dtpDATA.Location = new System.Drawing.Point(70, 157);
             this.dtpDATA.MaxDate = new System.DateTime(2040, 12, 31, 0, 0, 0, 0);
             this.dtpDATA.MinDate = new System.DateTime(1990, 12, 31, 0, 0, 0, 0);
             this.dtpDATA.Name = "dtpDATA";
@@ -195,24 +182,10 @@
             // 
             // tbPRIM
             // 
-            this.tbPRIM.Location = new System.Drawing.Point(70, 218);
+            this.tbPRIM.Location = new System.Drawing.Point(70, 209);
             this.tbPRIM.Name = "tbPRIM";
             this.tbPRIM.Size = new System.Drawing.Size(200, 20);
             this.tbPRIM.TabIndex = 5;
-            // 
-            // tbDESI
-            // 
-            this.tbDESI.Location = new System.Drawing.Point(291, 116);
-            this.tbDESI.Name = "tbDESI";
-            this.tbDESI.Size = new System.Drawing.Size(200, 20);
-            this.tbDESI.TabIndex = 3;
-            // 
-            // tbINDE
-            // 
-            this.tbINDE.Location = new System.Drawing.Point(291, 76);
-            this.tbINDE.Name = "tbINDE";
-            this.tbINDE.Size = new System.Drawing.Size(200, 20);
-            this.tbINDE.TabIndex = 2;
             // 
             // tbNaim
             // 
@@ -220,11 +193,12 @@
             this.tbNaim.Name = "tbNaim";
             this.tbNaim.Size = new System.Drawing.Size(200, 20);
             this.tbNaim.TabIndex = 1;
+            this.tbNaim.WordWrap = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 222);
+            this.label8.Location = new System.Drawing.Point(23, 213);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 7;
@@ -234,7 +208,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(23, 168);
+            this.label7.Location = new System.Drawing.Point(23, 159);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 13);
             this.label7.TabIndex = 6;
@@ -275,8 +249,8 @@
             this.cbFIRM.FormattingEnabled = true;
             this.cbFIRM.Location = new System.Drawing.Point(51, 24);
             this.cbFIRM.Name = "cbFIRM";
-            this.cbFIRM.Size = new System.Drawing.Size(57, 21);
-            this.cbFIRM.TabIndex = 21;
+            this.cbFIRM.Size = new System.Drawing.Size(85, 21);
+            this.cbFIRM.TabIndex = 1;
             // 
             // cbDESI
             // 
@@ -284,7 +258,7 @@
             this.cbDESI.Location = new System.Drawing.Point(70, 115);
             this.cbDESI.Name = "cbDESI";
             this.cbDESI.Size = new System.Drawing.Size(85, 21);
-            this.cbDESI.TabIndex = 22;
+            this.cbDESI.TabIndex = 3;
             // 
             // cbINDE
             // 
@@ -292,14 +266,14 @@
             this.cbINDE.Location = new System.Drawing.Point(70, 76);
             this.cbINDE.Name = "cbINDE";
             this.cbINDE.Size = new System.Drawing.Size(85, 21);
-            this.cbINDE.TabIndex = 22;
+            this.cbINDE.TabIndex = 2;
             this.toolTip1.SetToolTip(this.cbINDE, "\r\n");
             // 
             // addREGISTRY
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 504);
+            this.ClientSize = new System.Drawing.Size(352, 467);
             this.Controls.Add(this.gpTemplet);
             this.Name = "addREGISTRY";
             this.Padding = new System.Windows.Forms.Padding(10);
@@ -317,24 +291,21 @@
 
         private System.Windows.Forms.GroupBox gpTemplet;
         private System.Windows.Forms.GroupBox gpDesi;
-        private System.Windows.Forms.TextBox tbFIRM;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbNUMB;
         private System.Windows.Forms.TextBox tbCODE;
         private System.Windows.Forms.DateTimePicker dtpDATA;
-        private System.Windows.Forms.TextBox tbINDE;
         private System.Windows.Forms.TextBox tbNaim;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tbPRIM;
-        private System.Windows.Forms.TextBox tbDESI;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ComboBox cbFIRM;

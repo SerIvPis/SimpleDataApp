@@ -41,6 +41,7 @@ namespace SimpleDataApp
 
         private void InitComboBox( )
         {
+            string defaultValue = "<Пусто>";
             //Хеш таблица для удаления дублежей данных
             HashSet<string> resultList = new HashSet<string>( );
 
@@ -49,8 +50,9 @@ namespace SimpleDataApp
             {
                 resultList.Add((item as DataRow)[ "DESI" ].ToString());
             }
+            cbDESI.Items.Add( defaultValue );
             cbDESI.Items.AddRange( resultList.OrderBy(p=>p).ToArray( ) );
-            cbDESI.SelectedIndex = 1;
+            cbDESI.SelectedIndex = 0;
 
 
             //Запоняем INDE
@@ -59,8 +61,9 @@ namespace SimpleDataApp
             {
                 resultList.Add( (item as DataRow)[ "INDE" ].ToString( ) );
             }
+            cbINDE.Items.Add( defaultValue );
             cbINDE.Items.AddRange( resultList.OrderBy( p => p ).ToArray( ) );
-            cbINDE.SelectedIndex = 1;
+            cbINDE.SelectedIndex = 0;
 
 
             //Запоняем FIRM
@@ -69,13 +72,19 @@ namespace SimpleDataApp
             {
                 resultList.Add( (item as DataRow)[ "FIRM" ].ToString( ) );
             }
+            cbFIRM.Items.Add( defaultValue );
             cbFIRM.Items.AddRange( resultList.OrderBy( p => p ).ToArray( ) );
-            cbFIRM.SelectedIndex = 1;
+            cbFIRM.SelectedIndex = 0;
 
 
         }
 
         private void btnClear_Click( object sender, EventArgs e )
+        {
+            ClearText( );
+        }
+
+        private void ClearText( )
         {
             foreach (var item in gpTemplet.Controls)
             {
@@ -86,6 +95,10 @@ namespace SimpleDataApp
                 if (item is DateTimePicker)
                 {
                     ((DateTimePicker)item).Value = DateTime.Now;
+                }
+                if (item is ComboBox)
+                {
+                    ((ComboBox)item).SelectedIndex = 0;
                 }
             }
             foreach (var item in gpDesi.Controls)
@@ -118,6 +131,7 @@ namespace SimpleDataApp
                                     {"CODE", tbCODE.Text},
                                     {"NUMB", tbNUMB.Text}
                                 } );
+            ClearText( );
         }
 
         private void InitToolTip( )
