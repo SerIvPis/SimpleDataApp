@@ -72,6 +72,10 @@ namespace MDBLibrary
             //объявляем объект класса OleDbParameter и добавляем к команде cmd
             foreach (var item in keyValues.ToList())
             {
+                if (item.GetType( ) == typeof( int ) )
+                {
+                    CreateParameterString( cmd, $"@{item.Key}", item.Value, OleDbType.Integer );
+                }
                 CreateParameterString( cmd, $"@{item.Key}", item.Value, OleDbType.LongVarChar );
             }
           
@@ -83,7 +87,7 @@ namespace MDBLibrary
             catch (OleDbException oe)
             {
                 //MessageBox.Show( $"Ошибка вставки в таблицу REGISTRY: {oe.Message}" );
-                throw;
+                throw new ArgumentException( $"{oe.Message}" ); ;
             }
             finally
             {

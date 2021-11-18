@@ -73,6 +73,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="addECCO_ATTR.resx">
+      <DependentUpon>addECCO_ATTR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addECCO_CONT.resx">
       <DependentUpon>addECCO_CONT.cs</DependentUpon>
     </EmbeddedResource>

@@ -88,7 +88,7 @@ namespace SimpleDataApp
 
         private void cbxSelectTableForView_SelectionChangeCommitted( object sender, EventArgs e )
         {
-            dgvCommon.DataMember = cbxSelectTableForView.SelectedItem.ToString( );
+            //dgvCommon.DataMember = cbxSelectTableForView.SelectedItem.ToString( );
         }
 
         private void checkBox1_CheckStateChanged( object sender, EventArgs e )
@@ -99,6 +99,11 @@ namespace SimpleDataApp
         private void btnForward_Click( object sender, EventArgs e )
         {
            
+        }
+
+        private void cbxSelectTableForView_SelectedIndexChanged( object sender, EventArgs e )
+        {
+            dgvCommon.DataMember = cbxSelectTableForView.SelectedItem.ToString( );
         }
     }
 }

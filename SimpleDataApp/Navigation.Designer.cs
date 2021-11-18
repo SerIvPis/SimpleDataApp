@@ -28,15 +28,13 @@
         /// </summary>
         private void InitializeComponent( )
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Navigation));
             this.btnGoToFillorCancel = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.dgvCommon = new System.Windows.Forms.DataGridView();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.btnForward = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,11 +46,11 @@
             // 
             // btnGoToFillorCancel
             // 
-            this.btnGoToFillorCancel.Location = new System.Drawing.Point(649, 174);
+            this.btnGoToFillorCancel.Location = new System.Drawing.Point(649, 92);
             this.btnGoToFillorCancel.Name = "btnGoToFillorCancel";
             this.btnGoToFillorCancel.Size = new System.Drawing.Size(123, 23);
             this.btnGoToFillorCancel.TabIndex = 0;
-            this.btnGoToFillorCancel.Text = "Добавить строку";
+            this.btnGoToFillorCancel.Text = "Добавить запись";
             this.btnGoToFillorCancel.UseVisualStyleBackColor = true;
             this.btnGoToFillorCancel.Click += new System.EventHandler(this.btnGoToFillorCancel_Click);
             // 
@@ -69,26 +67,26 @@
             // dgvCommon
             // 
             this.dgvCommon.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCommon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCommon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCommon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCommon.Location = new System.Drawing.Point(12, 12);
             this.dgvCommon.MultiSelect = false;
             this.dgvCommon.Name = "dgvCommon";
             this.dgvCommon.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCommon.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCommon.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCommon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCommon.Size = new System.Drawing.Size(618, 403);
             this.dgvCommon.TabIndex = 2;
@@ -103,31 +101,12 @@
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // btnForward
-            // 
-            this.btnForward.Location = new System.Drawing.Point(166, 426);
-            this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(90, 23);
-            this.btnForward.TabIndex = 4;
-            this.btnForward.Text = "Назад";
-            this.btnForward.UseVisualStyleBackColor = true;
-            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
-            // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(262, 426);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(90, 23);
-            this.btnBack.TabIndex = 5;
-            this.btnBack.Text = "Вперед";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripSplitButton1,
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 470);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 457);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(786, 22);
             this.statusStrip1.TabIndex = 6;
@@ -156,6 +135,7 @@
             this.cbxSelectTableForView.Name = "cbxSelectTableForView";
             this.cbxSelectTableForView.Size = new System.Drawing.Size(121, 21);
             this.cbxSelectTableForView.TabIndex = 7;
+            this.cbxSelectTableForView.SelectedIndexChanged += new System.EventHandler(this.cbxSelectTableForView_SelectedIndexChanged);
             this.cbxSelectTableForView.SelectionChangeCommitted += new System.EventHandler(this.cbxSelectTableForView_SelectionChangeCommitted);
             // 
             // cbEdit
@@ -175,18 +155,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 492);
+            this.ClientSize = new System.Drawing.Size(786, 479);
             this.Controls.Add(this.cbEdit);
             this.Controls.Add(this.cbxSelectTableForView);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnForward);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.dgvCommon);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnGoToFillorCancel);
             this.Name = "Navigation";
-            this.Text = "FillorCansel";
+            this.Text = "Редактор БД";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCommon)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -201,8 +179,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.DataGridView dgvCommon;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.Button btnForward;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
