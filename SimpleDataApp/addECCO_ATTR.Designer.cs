@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gpTemplet = new System.Windows.Forms.GroupBox();
+            this.cbCREATOR = new System.Windows.Forms.ComboBox();
+            this.cbCODE = new System.Windows.Forms.ComboBox();
+            this.cbDIVI = new System.Windows.Forms.ComboBox();
+            this.cbFIRM = new System.Windows.Forms.ComboBox();
             this.tbCREATOR = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tbCKIT = new System.Windows.Forms.TextBox();
@@ -53,10 +57,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.gpTemplet.SuspendLayout();
             this.gpDesi.SuspendLayout();
             this.SuspendLayout();
@@ -65,11 +65,13 @@
             // 
             this.gpTemplet.AutoSize = true;
             this.gpTemplet.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gpTemplet.Controls.Add(this.comboBox4);
-            this.gpTemplet.Controls.Add(this.comboBox3);
-            this.gpTemplet.Controls.Add(this.comboBox2);
-            this.gpTemplet.Controls.Add(this.comboBox1);
+            this.gpTemplet.Controls.Add(this.tbFIRM);
+            this.gpTemplet.Controls.Add(this.cbCREATOR);
+            this.gpTemplet.Controls.Add(this.cbCODE);
+            this.gpTemplet.Controls.Add(this.cbDIVI);
+            this.gpTemplet.Controls.Add(this.cbFIRM);
             this.gpTemplet.Controls.Add(this.tbCREATOR);
+            this.gpTemplet.Controls.Add(this.tbCODE);
             this.gpTemplet.Controls.Add(this.label10);
             this.gpTemplet.Controls.Add(this.tbCKIT);
             this.gpTemplet.Controls.Add(this.label9);
@@ -94,6 +96,38 @@
             this.gpTemplet.TabIndex = 1;
             this.gpTemplet.TabStop = false;
             this.gpTemplet.Text = "Шаблон";
+            // 
+            // cbCREATOR
+            // 
+            this.cbCREATOR.FormattingEnabled = true;
+            this.cbCREATOR.Location = new System.Drawing.Point(72, 221);
+            this.cbCREATOR.Name = "cbCREATOR";
+            this.cbCREATOR.Size = new System.Drawing.Size(116, 21);
+            this.cbCREATOR.TabIndex = 26;
+            // 
+            // cbCODE
+            // 
+            this.cbCODE.FormattingEnabled = true;
+            this.cbCODE.Location = new System.Drawing.Point(70, 323);
+            this.cbCODE.Name = "cbCODE";
+            this.cbCODE.Size = new System.Drawing.Size(117, 21);
+            this.cbCODE.TabIndex = 25;
+            // 
+            // cbDIVI
+            // 
+            this.cbDIVI.FormattingEnabled = true;
+            this.cbDIVI.Location = new System.Drawing.Point(72, 26);
+            this.cbDIVI.Name = "cbDIVI";
+            this.cbDIVI.Size = new System.Drawing.Size(112, 21);
+            this.cbDIVI.TabIndex = 26;
+            // 
+            // cbFIRM
+            // 
+            this.cbFIRM.FormattingEnabled = true;
+            this.cbFIRM.Location = new System.Drawing.Point(70, 286);
+            this.cbFIRM.Name = "cbFIRM";
+            this.cbFIRM.Size = new System.Drawing.Size(117, 21);
+            this.cbFIRM.TabIndex = 25;
             // 
             // tbCREATOR
             // 
@@ -160,12 +194,10 @@
             // gpDesi
             // 
             this.gpDesi.AutoSize = true;
-            this.gpDesi.Controls.Add(this.tbFIRM);
             this.gpDesi.Controls.Add(this.label2);
             this.gpDesi.Controls.Add(this.label3);
             this.gpDesi.Controls.Add(this.label4);
             this.gpDesi.Controls.Add(this.tbNUMB);
-            this.gpDesi.Controls.Add(this.tbCODE);
             this.gpDesi.Location = new System.Drawing.Point(19, 265);
             this.gpDesi.Name = "gpDesi";
             this.gpDesi.Size = new System.Drawing.Size(263, 138);
@@ -175,7 +207,7 @@
             // 
             // tbFIRM
             // 
-            this.tbFIRM.Location = new System.Drawing.Point(50, 23);
+            this.tbFIRM.Location = new System.Drawing.Point(311, 291);
             this.tbFIRM.Name = "tbFIRM";
             this.tbFIRM.Size = new System.Drawing.Size(200, 20);
             this.tbFIRM.TabIndex = 6;
@@ -216,7 +248,7 @@
             // 
             // tbCODE
             // 
-            this.tbCODE.Location = new System.Drawing.Point(50, 63);
+            this.tbCODE.Location = new System.Drawing.Point(311, 331);
             this.tbCODE.Name = "tbCODE";
             this.tbCODE.Size = new System.Drawing.Size(200, 20);
             this.tbCODE.TabIndex = 7;
@@ -247,7 +279,7 @@
             // 
             // tbDIVI
             // 
-            this.tbDIVI.Location = new System.Drawing.Point(70, 27);
+            this.tbDIVI.Location = new System.Drawing.Point(311, 27);
             this.tbDIVI.Name = "tbDIVI";
             this.tbDIVI.Size = new System.Drawing.Size(200, 20);
             this.tbDIVI.TabIndex = 1;
@@ -290,38 +322,6 @@
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "DIVI:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(312, 291);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(164, 21);
-            this.comboBox1.TabIndex = 25;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(312, 26);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(164, 21);
-            this.comboBox2.TabIndex = 26;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(312, 328);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(164, 21);
-            this.comboBox3.TabIndex = 25;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(312, 221);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(164, 21);
-            this.comboBox4.TabIndex = 26;
             // 
             // addECCO_ATTR
             // 
@@ -366,9 +366,9 @@
         private System.Windows.Forms.TextBox tbCREATOR;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbCREATOR;
+        private System.Windows.Forms.ComboBox cbCODE;
+        private System.Windows.Forms.ComboBox cbDIVI;
+        private System.Windows.Forms.ComboBox cbFIRM;
     }
 }

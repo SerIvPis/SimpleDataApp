@@ -71,7 +71,6 @@ namespace SimpleDataApp
             catch (OleDbException ex)
             {
                 MessageBox.Show( $"Ошибка подключения: {ex.Message}" );
-                throw;
             }
         }
 

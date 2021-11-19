@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gpTemplet = new System.Windows.Forms.GroupBox();
+            this.cbINDE = new System.Windows.Forms.ComboBox();
+            this.cbDESI = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -37,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cbFIRM = new System.Windows.Forms.ComboBox();
             this.tbNUMB = new System.Windows.Forms.TextBox();
             this.tbCODE = new System.Windows.Forms.TextBox();
             this.dtpDATA = new System.Windows.Forms.DateTimePicker();
@@ -48,9 +51,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cbFIRM = new System.Windows.Forms.ComboBox();
-            this.cbDESI = new System.Windows.Forms.ComboBox();
-            this.cbINDE = new System.Windows.Forms.ComboBox();
             this.gpTemplet.SuspendLayout();
             this.gpDesi.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +82,23 @@
             this.gpTemplet.TabIndex = 0;
             this.gpTemplet.TabStop = false;
             this.gpTemplet.Text = "Шаблон";
+            // 
+            // cbINDE
+            // 
+            this.cbINDE.FormattingEnabled = true;
+            this.cbINDE.Location = new System.Drawing.Point(70, 76);
+            this.cbINDE.Name = "cbINDE";
+            this.cbINDE.Size = new System.Drawing.Size(85, 21);
+            this.cbINDE.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.cbINDE, "\r\n");
+            // 
+            // cbDESI
+            // 
+            this.cbDESI.FormattingEnabled = true;
+            this.cbDESI.Location = new System.Drawing.Point(70, 115);
+            this.cbDESI.Name = "cbDESI";
+            this.cbDESI.Size = new System.Drawing.Size(85, 21);
+            this.cbDESI.TabIndex = 3;
             // 
             // btnCancel
             // 
@@ -156,6 +173,14 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "NUMB:";
             // 
+            // cbFIRM
+            // 
+            this.cbFIRM.FormattingEnabled = true;
+            this.cbFIRM.Location = new System.Drawing.Point(51, 24);
+            this.cbFIRM.Name = "cbFIRM";
+            this.cbFIRM.Size = new System.Drawing.Size(85, 21);
+            this.cbFIRM.TabIndex = 1;
+            // 
             // tbNUMB
             // 
             this.tbNUMB.Location = new System.Drawing.Point(50, 99);
@@ -182,7 +207,7 @@
             // 
             // tbPRIM
             // 
-            this.tbPRIM.Location = new System.Drawing.Point(70, 209);
+            this.tbPRIM.Location = new System.Drawing.Point(70, 198);
             this.tbPRIM.Name = "tbPRIM";
             this.tbPRIM.Size = new System.Drawing.Size(200, 20);
             this.tbPRIM.TabIndex = 5;
@@ -198,7 +223,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 213);
+            this.label8.Location = new System.Drawing.Point(23, 202);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 7;
@@ -243,31 +268,6 @@
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "NAIM:";
-            // 
-            // cbFIRM
-            // 
-            this.cbFIRM.FormattingEnabled = true;
-            this.cbFIRM.Location = new System.Drawing.Point(51, 24);
-            this.cbFIRM.Name = "cbFIRM";
-            this.cbFIRM.Size = new System.Drawing.Size(85, 21);
-            this.cbFIRM.TabIndex = 1;
-            // 
-            // cbDESI
-            // 
-            this.cbDESI.FormattingEnabled = true;
-            this.cbDESI.Location = new System.Drawing.Point(70, 115);
-            this.cbDESI.Name = "cbDESI";
-            this.cbDESI.Size = new System.Drawing.Size(85, 21);
-            this.cbDESI.TabIndex = 3;
-            // 
-            // cbINDE
-            // 
-            this.cbINDE.FormattingEnabled = true;
-            this.cbINDE.Location = new System.Drawing.Point(70, 76);
-            this.cbINDE.Name = "cbINDE";
-            this.cbINDE.Size = new System.Drawing.Size(85, 21);
-            this.cbINDE.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.cbINDE, "\r\n");
             // 
             // addREGISTRY
             // 
