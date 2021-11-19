@@ -28,20 +28,49 @@ namespace SimpleDataApp
             InitializeComponent( );
             this.db = _db;
             InitToolTip( );
+            InitComboBox( );
             dtpDATA.Value = DateTime.Now;
         }
 
+        private void InitComboBox( )
+        {
+            FillComboBox(cbCODE,"CODE" );
+            FillComboBox(cbDIVI,"DIVI" );
+            FillComboBox(cbCREATOR,"CREATOR" );
+            FillComboBox(cbFIRM,"FIRM" );
+        }
+
+        /// <summary>
+        /// Заполнение списка комбобокс уникальными 
+        /// значениями именновоного столбца
+        /// </summary>
+        /// <param name="_cb"></param>
+        /// <param name="_nameColomn"></param>
+        private void FillComboBox(ComboBox _cb , string _nameColomn)
+        {
+            string defaultValue = "<Пусто>";
+            //Хеш таблица для удаления дублежей данных
+            HashSet<string> resultList = new HashSet<string>( );
+
+            foreach (var item in db.accessDataSet.Tables[ ECCO_ATTR ].Rows)
+            {
+                resultList.Add( (item as DataRow)[ _nameColomn ].ToString( ) );
+            }
+            _cb.Items.Add( defaultValue );
+            _cb.Items.AddRange( resultList.OrderBy( p => p ).ToArray( ) );
+            _cb.SelectedIndex = 0;
+        }
 
         private void btnAdd_Click( object sender, EventArgs e )
         {
             db.addRowInTable( ECCO_ATTR,
                                new Dictionary<string, string>( ) {
-                                    {"DIVI", tbDIVI.Text},
+                                    {"DIVI", cbDIVI.Text},
                                     {"VYPD", tbVYPD.Text},
                                     {"CREATED", dtpDATA.Value.ToShortDateString()},
                                     {"NKIT", tbNKIT.Text},
-                                    {"FIRM", tbFIRM.Text},
-                                    {"CODE", tbCODE.Text},
+                                    {"FIRM", cbFIRM.Text},
+                                    {"CODE", cbCODE.Text},
                                     {"NUMB", tbNUMB.Text},
                                     {"CKIT", tbCKIT.Text}
                                } );
@@ -59,6 +88,10 @@ namespace SimpleDataApp
                 if (item is DateTimePicker)
                 {
                     ((DateTimePicker)item).Value = DateTime.Now;
+                }
+                if (item is ComboBox)
+                {
+                    ((ComboBox)item).SelectedIndex = 0;
                 }
             }
             foreach (var item in gpDesi.Controls)

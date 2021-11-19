@@ -41,42 +41,30 @@ namespace SimpleDataApp
 
         private void InitComboBox( )
         {
+            FillComboBox( cbDESI, "DESI" );
+            FillComboBox( cbINDE, "INDE" );
+            FillComboBox( cbFIRM, "FIRM" );
+        }
+
+        /// <summary>
+        /// Заполнение списка комбобокс уникальными 
+        /// значениями именновоного столбца
+        /// </summary>
+        /// <param name="_cb"></param>
+        /// <param name="_nameColomn"></param>
+        private void FillComboBox( ComboBox _cb, string _nameColomn )
+        {
             string defaultValue = "<Пусто>";
             //Хеш таблица для удаления дублежей данных
             HashSet<string> resultList = new HashSet<string>( );
 
-            //Запоняем DESI
-            foreach (var item in db.accessDataSet.Tables[ 0 ].Rows)
+            foreach (var item in db.accessDataSet.Tables[ REGISTRY ].Rows)
             {
-                resultList.Add((item as DataRow)[ "DESI" ].ToString());
+                resultList.Add( (item as DataRow)[ _nameColomn ].ToString( ) );
             }
-            cbDESI.Items.Add( defaultValue );
-            cbDESI.Items.AddRange( resultList.OrderBy(p=>p).ToArray( ) );
-            cbDESI.SelectedIndex = 0;
-
-
-            //Запоняем INDE
-            resultList.Clear( );
-            foreach (var item in db.accessDataSet.Tables[ 0 ].Rows)
-            {
-                resultList.Add( (item as DataRow)[ "INDE" ].ToString( ) );
-            }
-            cbINDE.Items.Add( defaultValue );
-            cbINDE.Items.AddRange( resultList.OrderBy( p => p ).ToArray( ) );
-            cbINDE.SelectedIndex = 0;
-
-
-            //Запоняем FIRM
-            resultList.Clear( );
-            foreach (var item in db.accessDataSet.Tables[ 0 ].Rows)
-            {
-                resultList.Add( (item as DataRow)[ "FIRM" ].ToString( ) );
-            }
-            cbFIRM.Items.Add( defaultValue );
-            cbFIRM.Items.AddRange( resultList.OrderBy( p => p ).ToArray( ) );
-            cbFIRM.SelectedIndex = 0;
-
-
+            _cb.Items.Add( defaultValue );
+            _cb.Items.AddRange( resultList.OrderBy( p => p ).ToArray( ) );
+            _cb.SelectedIndex = 0;
         }
 
         private void btnClear_Click( object sender, EventArgs e )
@@ -121,13 +109,10 @@ namespace SimpleDataApp
                                 new Dictionary<string, string>( ) {
                                     {"NAIM", tbNaim.Text},
                                     {"INDE", cbINDE.Text},
-                                    //{"INDE", tbINDE.Text},
                                     {"DESI", cbDESI.Text},
-                                    //{"DESI", tbDESI.Text},
                                     {"DATA", dtpDATA.Value.ToShortDateString()},
                                     {"PRIM", tbPRIM.Text},
                                     {"FIRM", cbFIRM.Text},
-                                    //{"FIRM", tbFIRM.Text},
                                     {"CODE", tbCODE.Text},
                                     {"NUMB", tbNUMB.Text}
                                 } );
@@ -139,9 +124,9 @@ namespace SimpleDataApp
             //Список подсказок
             List<string> PopUpStrings = new List<string>
             {
-                "Краткое пояснение",
-                "Иванов",
                 "ШРС-С",
+                "Иванов",
+                "Краткое пояснение",
                 "Кабель",
                 "ШИВА",
                 "789",
@@ -166,12 +151,22 @@ namespace SimpleDataApp
                 {
                     listToolTips[ index ].SetToolTip( (item as TextBox), $"{PopUpStrings[ index++ ]}" );
                 }
+                if (item is ComboBox)
+                {
+                    listToolTips[ index ].SetToolTip( (item as ComboBox), $"{PopUpStrings[ index++ ]}" );
+
+                }
             }
             foreach (var item in gpDesi.Controls)
             {
                 if (item is TextBox)
                 {
                     listToolTips[ index ].SetToolTip( (item as TextBox), $"{PopUpStrings[ index++ ]}" );
+                }
+                if (item is ComboBox)
+                {
+                    listToolTips[ index ].SetToolTip( (item as ComboBox), $"{PopUpStrings[ index++ ]}" );
+
                 }
             }
 

@@ -34,7 +34,6 @@
             this.cbCODE = new System.Windows.Forms.ComboBox();
             this.cbDIVI = new System.Windows.Forms.ComboBox();
             this.cbFIRM = new System.Windows.Forms.ComboBox();
-            this.tbCREATOR = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tbCKIT = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -42,16 +41,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.gpDesi = new System.Windows.Forms.GroupBox();
-            this.tbFIRM = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbNUMB = new System.Windows.Forms.TextBox();
-            this.tbCODE = new System.Windows.Forms.TextBox();
             this.dtpDATA = new System.Windows.Forms.DateTimePicker();
             this.tbNKIT = new System.Windows.Forms.TextBox();
             this.tbVYPD = new System.Windows.Forms.TextBox();
-            this.tbDIVI = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,13 +61,10 @@
             // 
             this.gpTemplet.AutoSize = true;
             this.gpTemplet.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gpTemplet.Controls.Add(this.tbFIRM);
             this.gpTemplet.Controls.Add(this.cbCREATOR);
             this.gpTemplet.Controls.Add(this.cbCODE);
             this.gpTemplet.Controls.Add(this.cbDIVI);
             this.gpTemplet.Controls.Add(this.cbFIRM);
-            this.gpTemplet.Controls.Add(this.tbCREATOR);
-            this.gpTemplet.Controls.Add(this.tbCODE);
             this.gpTemplet.Controls.Add(this.label10);
             this.gpTemplet.Controls.Add(this.tbCKIT);
             this.gpTemplet.Controls.Add(this.label9);
@@ -82,7 +75,6 @@
             this.gpTemplet.Controls.Add(this.dtpDATA);
             this.gpTemplet.Controls.Add(this.tbNKIT);
             this.gpTemplet.Controls.Add(this.tbVYPD);
-            this.gpTemplet.Controls.Add(this.tbDIVI);
             this.gpTemplet.Controls.Add(this.label8);
             this.gpTemplet.Controls.Add(this.label7);
             this.gpTemplet.Controls.Add(this.label6);
@@ -92,7 +84,7 @@
             this.gpTemplet.Margin = new System.Windows.Forms.Padding(10);
             this.gpTemplet.Name = "gpTemplet";
             this.gpTemplet.Padding = new System.Windows.Forms.Padding(10);
-            this.gpTemplet.Size = new System.Drawing.Size(608, 466);
+            this.gpTemplet.Size = new System.Drawing.Size(321, 466);
             this.gpTemplet.TabIndex = 1;
             this.gpTemplet.TabStop = false;
             this.gpTemplet.Text = "Шаблон";
@@ -110,7 +102,7 @@
             this.cbCODE.FormattingEnabled = true;
             this.cbCODE.Location = new System.Drawing.Point(70, 323);
             this.cbCODE.Name = "cbCODE";
-            this.cbCODE.Size = new System.Drawing.Size(117, 21);
+            this.cbCODE.Size = new System.Drawing.Size(84, 21);
             this.cbCODE.TabIndex = 25;
             // 
             // cbDIVI
@@ -126,15 +118,8 @@
             this.cbFIRM.FormattingEnabled = true;
             this.cbFIRM.Location = new System.Drawing.Point(70, 286);
             this.cbFIRM.Name = "cbFIRM";
-            this.cbFIRM.Size = new System.Drawing.Size(117, 21);
+            this.cbFIRM.Size = new System.Drawing.Size(85, 21);
             this.cbFIRM.TabIndex = 25;
-            // 
-            // tbCREATOR
-            // 
-            this.tbCREATOR.Location = new System.Drawing.Point(70, 222);
-            this.tbCREATOR.Name = "tbCREATOR";
-            this.tbCREATOR.Size = new System.Drawing.Size(200, 20);
-            this.tbCREATOR.TabIndex = 23;
             // 
             // label10
             // 
@@ -200,17 +185,10 @@
             this.gpDesi.Controls.Add(this.tbNUMB);
             this.gpDesi.Location = new System.Drawing.Point(19, 265);
             this.gpDesi.Name = "gpDesi";
-            this.gpDesi.Size = new System.Drawing.Size(263, 138);
+            this.gpDesi.Size = new System.Drawing.Size(178, 138);
             this.gpDesi.TabIndex = 17;
             this.gpDesi.TabStop = false;
             this.gpDesi.Text = "Децимальный номер";
-            // 
-            // tbFIRM
-            // 
-            this.tbFIRM.Location = new System.Drawing.Point(311, 291);
-            this.tbFIRM.Name = "tbFIRM";
-            this.tbFIRM.Size = new System.Drawing.Size(200, 20);
-            this.tbFIRM.TabIndex = 6;
             // 
             // label2
             // 
@@ -243,15 +221,8 @@
             // 
             this.tbNUMB.Location = new System.Drawing.Point(50, 99);
             this.tbNUMB.Name = "tbNUMB";
-            this.tbNUMB.Size = new System.Drawing.Size(200, 20);
+            this.tbNUMB.Size = new System.Drawing.Size(58, 20);
             this.tbNUMB.TabIndex = 8;
-            // 
-            // tbCODE
-            // 
-            this.tbCODE.Location = new System.Drawing.Point(311, 331);
-            this.tbCODE.Name = "tbCODE";
-            this.tbCODE.Size = new System.Drawing.Size(200, 20);
-            this.tbCODE.TabIndex = 7;
             // 
             // dtpDATA
             // 
@@ -259,7 +230,7 @@
             this.dtpDATA.MaxDate = new System.DateTime(2040, 12, 31, 0, 0, 0, 0);
             this.dtpDATA.MinDate = new System.DateTime(1990, 12, 31, 0, 0, 0, 0);
             this.dtpDATA.Name = "dtpDATA";
-            this.dtpDATA.Size = new System.Drawing.Size(200, 20);
+            this.dtpDATA.Size = new System.Drawing.Size(141, 20);
             this.dtpDATA.TabIndex = 4;
             this.dtpDATA.Value = new System.DateTime(1990, 12, 31, 0, 0, 0, 0);
             // 
@@ -276,13 +247,6 @@
             this.tbVYPD.Name = "tbVYPD";
             this.tbVYPD.Size = new System.Drawing.Size(200, 20);
             this.tbVYPD.TabIndex = 3;
-            // 
-            // tbDIVI
-            // 
-            this.tbDIVI.Location = new System.Drawing.Point(311, 27);
-            this.tbDIVI.Name = "tbDIVI";
-            this.tbDIVI.Size = new System.Drawing.Size(200, 20);
-            this.tbDIVI.TabIndex = 1;
             // 
             // label8
             // 
@@ -327,7 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 466);
+            this.ClientSize = new System.Drawing.Size(321, 466);
             this.Controls.Add(this.gpTemplet);
             this.Name = "addECCO_ATTR";
             this.Text = "ECCO_ATTR";
@@ -347,23 +311,19 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.GroupBox gpDesi;
-        private System.Windows.Forms.TextBox tbFIRM;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbNUMB;
-        private System.Windows.Forms.TextBox tbCODE;
         private System.Windows.Forms.DateTimePicker dtpDATA;
         private System.Windows.Forms.TextBox tbNKIT;
         private System.Windows.Forms.TextBox tbVYPD;
-        private System.Windows.Forms.TextBox tbDIVI;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbCKIT;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tbCREATOR;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ComboBox cbCREATOR;
