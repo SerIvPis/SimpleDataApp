@@ -104,5 +104,102 @@ namespace SimpleDataApp
         {
             dgvCommon.DataMember = cbxSelectTableForView.SelectedItem.ToString( );
         }
+
+        private void button1_Click( object sender, EventArgs e )
+        {
+            dataGridView1.DataSource = ConvertExcelToDataTableGroupSubGroup( @"d:\test.xlsx" );
+        }
+        public static DataTable ConvertExcelToDataTableGroupSubGroup( string FileName )
+        {
+
+            DataTable dtResult = null;
+            int totalSheet = 0; //No of sheets on excel file  
+            using (OleDbConnection objConn = new OleDbConnection( "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + FileName + ";Extended Properties='Excel 12.0;HDR=YES;IMEX=1;';" ))
+            {
+                DataSet excelDs = new DataSet("Excel File");
+                DataTable dt = null;
+                OleDbDataAdapter excelAdapter = new OleDbDataAdapter( );
+
+                objConn.Open( );
+               
+                dt = objConn.GetOleDbSchemaTable( OleDbSchemaGuid.Tables, null );
+                foreach (DataRow item in dt.Rows)
+                {
+                    MessageBox.Show( $"{item[ "TABLE_NAME" ].ToString( )}" );
+                }
+                OleDbCommand cmd = new OleDbCommand( );
+                
+                
+                //DataTable dt = objConn.GetOleDbSchemaTable( OleDbSchemaGuid.Tables, null );
+                //string sheetName = string.Empty;
+                //if (dt != null)
+                //{
+                //    var tempDataTable = (from dataRow in dt.AsEnumerable( )
+                //                         where !dataRow[ "TABLE_NAME" ].ToString( ).Contains( "FilterDatabase" )
+                //                         select dataRow).CopyToDataTable( );
+                //    dt = tempDataTable;
+                //    totalSheet = dt.Rows.Count;
+
+                //    // Sheet from first index
+                //    sheetName = dt.Rows[ 1 ][ "TABLE_NAME" ].ToString( );
+                //}
+                //cmd.Connection = objConn;
+                //cmd.CommandType = CommandType.Text;
+                //cmd.CommandText = "SELECT * FROM [" + sheetName + "]";
+                //oleda = new OleDbDataAdapter( cmd );
+                //oleda.Fill( ds, "excelData" );
+                //dtResult = ds.Tables[ "excelData" ];
+                //objConn.Close( );
+                return dtResult; //Returning Dattable  
+            }
+        }
+
+        static DataSet Parse( string fileName )
+        {
+            string connectionString = string.Format( "provider=Microsoft.Jet.OLEDB.4.0; data source={0};Extended Properties=Excel 8.0;", fileName );
+
+
+            DataSet data = new DataSet( );
+
+            foreach (var sheetName in GetExcelSheetNames( connectionString ))
+            {
+                using (OleDbConnection con = new OleDbConnection( connectionString ))
+                {
+                    var dataTable = new DataTable( );
+                    string query = string.Format( "SELECT * FROM [{0}]", sheetName );
+                    con.Open( );
+                    OleDbDataAdapter adapter = new OleDbDataAdapter( query, con );
+                    adapter.Fill( dataTable );
+                    data.Tables.Add( dataTable );
+                }
+            }
+
+            return data;
+        }
+
+        static string[] GetExcelSheetNames( string connectionString )
+        {
+            OleDbConnection con = null;
+            DataTable dt = null;
+            con = new OleDbConnection( connectionString );
+            con.Open( );
+            dt = con.GetOleDbSchemaTable( OleDbSchemaGuid.Tables, null );
+
+            if (dt == null)
+            {
+                return null;
+            }
+
+            String[] excelSheetNames = new String[ dt.Rows.Count ];
+            int i = 0;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                excelSheetNames[ i ] = row[ "TABLE_NAME" ].ToString( );
+                i++;
+            }
+
+            return excelSheetNames;
+        }
     }
 }
